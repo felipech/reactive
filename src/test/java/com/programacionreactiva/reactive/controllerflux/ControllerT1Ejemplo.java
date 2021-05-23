@@ -3,8 +3,11 @@ package com.programacionreactiva.reactive.controllerflux;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.EntityExchangeResult;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -17,8 +20,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@WebFluxTest
+@SpringBootTest
+@AutoConfigureWebTestClient
 @RunWith(SpringRunner.class)
+@DirtiesContext
 public class ControllerT1Ejemplo {
 
     //para la version no blocking yt para la que es bloqueante se puede usar resttemplatetest

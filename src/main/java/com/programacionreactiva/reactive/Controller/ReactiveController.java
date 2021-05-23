@@ -18,7 +18,6 @@ public class ReactiveController {
                 .log();
     }
 
-
     @GetMapping(value = "/fluxstream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Long> ejemploFLuxStream(){
         return Flux.interval(Duration.ofSeconds(1))
