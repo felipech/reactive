@@ -21,6 +21,8 @@ import reactor.test.StepVerifier;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.programacionreactiva.reactive.constants.ItemConstants.ITEM_END_POINT_V1;
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @DirtiesContext
@@ -164,6 +166,16 @@ public class ItemControllerTst {
                 .body(Mono.just(item), Item.class)
                 .exchange()
                 .expectStatus().isNotFound();
+
+    }
+
+    @Test
+    public void runtimeException(){
+        webTestClient.get().uri(ITEM_END_POINT_V1+"/exception")
+                .exchange()
+                .expectStatus().is5xxServerError()
+                .expectBody(String.class)
+                .isEqualTo("runtime exception error");
 
     }
 
